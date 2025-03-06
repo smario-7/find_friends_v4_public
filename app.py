@@ -32,6 +32,13 @@ DATA = "welcome_survey_simple_v2.csv"
 
 CLUSTER_NAMES_AND_DESCRIPTIONS = "welcome_survey_cluster_names_and_description_v2.json"
 
+footer_html = """
+            <style>.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: #000;color: white;text-align: center;}</style>
+            <div class='footer'>
+                <p>Developed by Mariusz Wysogląd </p>
+            </div>
+        """
+
 def get_model():
     return load_model(MODEL_NAME)
 
@@ -127,7 +134,13 @@ if "search_mode" in ss:
 st.markdown("## Znajdz kolegę, koleżankę 👫")
 st.markdown("---")
 
+# FOOTER
+
+
+
 assure_db_collection_exists()
+
+
 
 with st.sidebar:
     st.header("Powiedz nam coś o sobie")
@@ -175,6 +188,8 @@ with st.sidebar:
         gender = st.radio("Płeć", ["Mężczyzna", "Kobieta"])
         ss["search_mode"] = "search"
 
+        st.markdown(footer_html, unsafe_allow_html=True)
+
     with tab2:
         description_from_user = st.text_area(
             "Opisz siebie",
@@ -193,7 +208,7 @@ with st.sidebar:
             height = 400, key = "description")
         if st.button("Wyśllij"):
             ss["search_mode"] = "description"
-
+        st.markdown(footer_html, unsafe_allow_html=True)
 
     person_df = pd.DataFrame([
         {
@@ -224,6 +239,10 @@ st.header(f"Najbliżej Ci do grupy {predicted_cluster_data['name']}")
 st.markdown(predicted_cluster_data["description"])
 
 # info section
+
+
+
+
 
 col1, col2, col3 = st.columns(3)
 with col1:
