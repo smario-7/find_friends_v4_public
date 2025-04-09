@@ -266,7 +266,7 @@ fig = go.Figure(data= [go.Pie(
     hole = .3
 )])
 fig.update_layout(
-    title = "Wiek ptocentowo"
+    title = "Wiek procentowo"
 )
 st.plotly_chart(fig)
 
