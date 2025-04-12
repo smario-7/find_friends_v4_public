@@ -296,7 +296,7 @@ st.plotly_chart(fig)
 
 fig = px.histogram(same_cluster_df, x = "gender")
 fig.update_layout(
-    title = "Rozkład półci w grupie",
+    title = "Rozkład płci w grupie",
     xaxis_title = "Płeć",
     yaxis_title = "Liczba osób"
 )
